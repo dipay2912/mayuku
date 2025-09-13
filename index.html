@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Mayukuuu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Overlay Background -->
+    <div class="overlay"></div>
+
+    <div class="container">
+        <h1>Buat Mayu Stecu stecu</h1>
+        <p class="quote">"Kalo Marah Jangan Toxic Banget Ya Tai, Seremmm..."</p>
+
+        <div class="heart"></div>
+
+        <button id="popupButton">Klik Ini Coba</button>
+        <button id="formButton">Yang Ini</button>
+
+        <div class="audio-controls">
+            <button onclick="playAudio()">▶️ Play Song</button>
+            <button onclick="pauseAudio()">⏸️ Stop Song</button>
+        </div>
+
+        <p class="signature">Kamu Itu Kaya Tai disungai, kadang cintanya nyangkut ke aku, kadang lewat doang.</p>
+    </div>
+
+    <!-- Audio -->
+    <audio id="loveSong" loop>
+        <source src="mayu.mp3" type="audio/mpeg">
+        Browser kamu tidak mendukung audio.
+    </audio>
+
+    <!-- Modal Popup -->
+    <div class="modal" id="popupModal">
+        <div class="modal-content">
+            <span class="close" id="closePopup">&times;</span>
+            <h2>MAAP ISENG</h2>
+            <p>BUKAN YANG INI KOCAK, YANG SEBELAHNYA</p>
+        </div>
+    </div>
+
+    <!-- 💬 Form Kirim Pesan -->
+    <div class="modal" id="formModal">
+        <div class="modal-content">
+            <span class="close" id="closeForm">&times;</span>
+            <h2>Send Message...</h2>
+            <form id="loveForm">
+                <input type="text" placeholder="Yourname..." required>
+                <textarea placeholder="Text..." required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById("loveSong");
+        function playAudio() { audio.play(); }
+        function pauseAudio() { audio.pause(); }
+
+        // Modal Popup
+        const popupBtn = document.getElementById("popupButton");
+        const popupModal = document.getElementById("popupModal");
+        const closePopup = document.getElementById("closePopup");
+
+        popupBtn.onclick = () => popupModal.style.display = "block";
+        closePopup.onclick = () => popupModal.style.display = "none";
+
+        // Modal Form
+        const formBtn = document.getElementById("formButton");
+        const formModal = document.getElementById("formModal");
+        const closeForm = document.getElementById("closeForm");
+
+        formBtn.onclick = () => formModal.style.display = "block";
+        closeForm.onclick = () => formModal.style.display = "none";
+
+        // Prevent actual submit
+        document.getElementById("loveForm").onsubmit = (e) => {
+            e.preventDefault();
+            alert("Aku tau Kamu Ngomong Kasar Pasti, Tapi Aku tetep cinta ko. wkwkwkw Lopyuuuuuuu MAyuuuuuuuuuuu");
+            formModal.style.display = "none";
+        };
+
+        // Close modals if clicked outside
+        window.onclick = function(e) {
+            if (e.target == popupModal) popupModal.style.display = "none";
+            if (e.target == formModal) formModal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
